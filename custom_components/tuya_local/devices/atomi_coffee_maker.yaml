@@ -17,15 +17,14 @@ entities:
         type: boolean
         name: sensor
 
-  - entity: sensor
+  - entity: select
     # brew strength (mode) - read/write
     name: Brew strength
-    class: enum
-    category: diagnostic
+    category: config
     dps:
       - id: 2
         type: string
-        name: sensor
+        name: option
         mapping:
           - dps_val: smart
             value: Regular
