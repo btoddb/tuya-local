@@ -52,7 +52,8 @@ entities:
 
   - entity: binary_sensor
     # bit 2 (value = 4), caraf not on base - read only
-    name: Caraf on base
+    name: Caraf not on base
+    class: problem
     category: diagnostic
     dps:
       - id: 6
@@ -60,9 +61,9 @@ entities:
         name: sensor
         mapping:
           - dps_val: 0
-            value: true
-          - dps_val: 4
             value: false
+          - dps_val: 4
+            value: true
 
   - entity: sensor
     # value of fault - remove when figured out what bits 0 and 1 mean (bit 2 is caraf not on base) - read only
@@ -100,14 +101,15 @@ entities:
 #        type: integer
 #        name: value
 
-#  - entity: switch
-#    # The switch may or may not turn on the machine.  If there isn't enough water or caraf is missing, then
-#    #   HA will show the switch as ON, but the machine will remain OFF
-#    icon: "mdi:coffee-maker"
-#    dps:
-#      - id: 103
-#        type: boolean
-#        name: switch
+  - entity: button
+    name: Start Brewing
+    # The switch may or may not turn on the machine.  If there isn't enough water or caraf is missing, then
+    #   HA will show the switch as ON, but the machine will remain OFF
+    icon: "mdi:coffee-maker"
+    dps:
+      - id: 103
+        type: boolean
+        name: button
 
 #  - entity: sensor
 #    # countdown - read only - didn't work
@@ -118,14 +120,14 @@ entities:
 #        type: integer
 #        name: sensor
 
-  - entity: select
+  - entity: button
     # calibration - sets the time when called - should be a button
-    name: Time Calibration
-    category: config
+    name: Set Time
+#    category: config
     dps:
       - id: 105
         type: string
-        name: option
+        name: button
         mapping:
           - dps_val: calibration
-            value: Set Time
+            value: calibration
