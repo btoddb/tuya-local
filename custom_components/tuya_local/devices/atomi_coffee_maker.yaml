@@ -50,33 +50,38 @@ entities:
           - dps_val: status4
             value: Unknown
 
-#  - entity: binary_sensor
-#    # bit 2 (value = 4), caraf is not on base - read only
-#    name: Caraf
-#    category: diagnostic
-#    dps:
-#      - id: 6
-#        type: bitfield
-#        name: sensor
-#        mapping:
-#          - dps_val: 0
-#            value: true
-#          - dps_val: 4
-#            value: false
+  - entity: binary_sensor
+    # bit 2 (value = 4), caraf not on base - read only
+    name: Caraf on base
+    category: diagnostic
+    dps:
+      - id: 6
+        type: bitfield
+        name: sensor
+        mapping:
+          - dps_val: 0
+            value: true
+          - dps_val: 4
+            value: false
 
   - entity: sensor
     # value of fault - remove when figured out what bits 0 and 1 mean (bit 2 is caraf not on base) - read only
-    name: fault status
+    #    - hidden doesn't seem to work. just adds "(hidden)" to the name of the entity but doesn't disable the entity
+    name: Raw fault status
     category: diagnostic
+    hidden: true
     dps:
       - id: 6
         type: bitfield
         name: sensor
 
   - entity: sensor
-    # not working, just shows 0ml - readonly
+    # amount of water in the tank - readonly - not working, just shows 0ml.  Once brewing is started, then the woter
+    #   level will be >= 0 if there isn't enough water in the tank - readonly - hidden doesn't seem to work.
+    #   just adds "(hidden)" to the name of the entity but doesn't disable the entity
     name: Water Level
     category: diagnostic
+    hidden: true
     dps:
       - id: 18
         type: integer
@@ -86,14 +91,14 @@ entities:
           min: 0
           max: 500
 
-#  - entity: sensor
+#  - entity: time
 #    # time - read only - didn't work
 #    name: Time
 #    category: diagnostic
 #    dps:
 #      - id: 102
 #        type: integer
-#        name: sensor
+#        name: value
 
 #  - entity: switch
 #    # The switch may or may not turn on the machine.  If there isn't enough water or caraf is missing, then
@@ -113,16 +118,14 @@ entities:
 #        type: integer
 #        name: sensor
 
-  - entity: sensor
-    # calibration - this could mean set the time, but needs testing
+  - entity: select
+    # calibration - sets the time when called - should be a button
     name: Time Calibration
-    category: diagnostic
+    category: config
     dps:
       - id: 105
         type: string
-        name: sensor
-
-  #translation_key
-#  Coffee maker device ID = eb5079e43d1b5e808c1iie
-#  IP = 192.168.59.26
-#  local key = 75GZ>z8Duf&^M9Y1
+        name: option
+        mapping:
+          - dps_val: calibration
+            value: Set Time
