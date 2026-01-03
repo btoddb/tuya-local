@@ -1,0 +1,129 @@
+name: Atomi Coffee Maker
+products:
+  - id: 000002cuuc
+    manufacturer: Atomi
+    name: Atomi Smart WiFi Coffee Maker
+  - id: gmbbmrpkqecjoeoa
+    manufacturer: Atomi
+    name: Atomi Smart WiFi Coffee Maker
+
+entities:
+  - entity: binary_sensor
+    # power status - read only
+    name: Brewing
+    category: diagnostic
+    dps:
+      - id: 1
+        type: boolean
+        name: sensor
+
+  - entity: sensor
+    # brew strength (mode) - read/write
+    name: Brew strength
+    class: enum
+    category: diagnostic
+    dps:
+      - id: 2
+        type: string
+        name: sensor
+        mapping:
+          - dps_val: smart
+            value: Regular
+          - dps_val: auto
+            value: Strong
+
+  - entity: sensor
+    # status of the machine: Off, Brewing, Warming - read only
+    name: Status
+    class: enum
+    category: diagnostic
+    dps:
+      - id: 3
+        type: string
+        name: sensor
+        mapping:
+          - dps_val: status1
+            value: Idle
+          - dps_val: status2
+            value: Brewing
+          - dps_val: status3
+            value: Warming
+          - dps_val: status4
+            value: Unknown
+
+#  - entity: binary_sensor
+#    # bit 2 (value = 4), caraf is not on base - read only
+#    name: Caraf
+#    category: diagnostic
+#    dps:
+#      - id: 6
+#        type: bitfield
+#        name: sensor
+#        mapping:
+#          - dps_val: 0
+#            value: true
+#          - dps_val: 4
+#            value: false
+
+  - entity: sensor
+    # value of fault - remove when figured out what bits 0 and 1 mean (bit 2 is caraf not on base) - read only
+    name: fault status
+    category: diagnostic
+    dps:
+      - id: 6
+        type: bitfield
+        name: sensor
+
+  - entity: sensor
+    # not working, just shows 0ml - readonly
+    name: Water Level
+    category: diagnostic
+    dps:
+      - id: 18
+        type: integer
+        name: sensor
+        unit: ml
+        range:
+          min: 0
+          max: 500
+
+#  - entity: sensor
+#    # time - read only - didn't work
+#    name: Time
+#    category: diagnostic
+#    dps:
+#      - id: 102
+#        type: integer
+#        name: sensor
+
+#  - entity: switch
+#    # The switch may or may not turn on the machine.  If there isn't enough water or caraf is missing, then
+#    #   HA will show the switch as ON, but the machine will remain OFF
+#    icon: "mdi:coffee-maker"
+#    dps:
+#      - id: 103
+#        type: boolean
+#        name: switch
+
+#  - entity: sensor
+#    # countdown - read only - didn't work
+#    name: Time
+#    category: diagnostic
+#    dps:
+#      - id: 104
+#        type: integer
+#        name: sensor
+
+  - entity: sensor
+    # calibration - this could mean set the time, but needs testing
+    name: Time Calibration
+    category: diagnostic
+    dps:
+      - id: 105
+        type: string
+        name: sensor
+
+  #translation_key
+#  Coffee maker device ID = eb5079e43d1b5e808c1iie
+#  IP = 192.168.59.26
+#  local key = 75GZ>z8Duf&^M9Y1
