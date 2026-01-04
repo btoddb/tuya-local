@@ -1,0 +1,155 @@
+{
+  "modelId": "000002cuuc",
+  "services": [
+    {
+      "actions": [],
+      "code": "",
+      "description": "",
+      "events": [],
+      "name": "默认服务",
+      "properties": [
+        {
+          "abilityId": 1,
+          "accessMode": "rw",
+          "code": "power",
+          "description": "",
+          "extensions": {
+            "iconName": "icon-dp_power",
+            "attribute": "1"
+          },
+          "name": "开关",
+          "typeSpec": {
+            "type": "bool"
+          }
+        },
+        {
+          "abilityId": 2,
+          "accessMode": "rw",
+          "code": "mode",
+          "description": "smart为正常模式\\nauto为香味模式",
+          "extensions": {
+            "iconName": "icon-dp_mode"
+          },
+          "name": "工作模式",
+          "typeSpec": {
+            "type": "enum",
+            "range": [
+              "smart",
+              "auto"
+            ]
+          }
+        },
+        {
+          "abilityId": 3,
+          "accessMode": "ro",
+          "code": "status",
+          "description": "待机中、工作中、保温中、预约倒计时中\\n",
+          "extensions": {
+            "iconName": "icon-dp_box"
+          },
+          "name": "工作状态",
+          "typeSpec": {
+            "type": "enum",
+            "range": [
+              "status1",
+              "status2",
+              "status3",
+              "status4"
+            ]
+          }
+        },
+        {
+          "abilityId": 6,
+          "accessMode": "ro",
+          "code": "fault",
+          "description": "根据产品的实际功能设定",
+          "extensions": {
+            "iconName": "icon-dp_warming",
+            "scope": "fault"
+          },
+          "name": "故障告警",
+          "typeSpec": {
+            "type": "bitmap",
+            "label": [
+              "1",
+              "2",
+              "3"
+            ],
+            "maxlen": 3
+          }
+        },
+        {
+          "abilityId": 18,
+          "accessMode": "ro",
+          "code": "water_current",
+          "description": "上传1为缺水，不上传时，什么也不要提示",
+          "extensions": {
+            "iconName": "icon-dp_wet2"
+          },
+          "name": "当前水量",
+          "typeSpec": {
+            "type": "value",
+            "max": 500,
+            "min": 0,
+            "scale": 0,
+            "step": 1,
+            "unit": "ml"
+          }
+        },
+        {
+          "abilityId": 102,
+          "accessMode": "ro",
+          "code": "time",
+          "description": "咖啡机上手动保存的预约时间,只有在预约状态才会上传.",
+          "name": "预约",
+          "typeSpec": {
+            "type": "value",
+            "max": 1440,
+            "min": 0,
+            "scale": 0,
+            "step": 1,
+            "unit": " 分钟"
+          }
+        },
+        {
+          "abilityId": 103,
+          "accessMode": "rw",
+          "code": "switch",
+          "description": "",
+          "name": "开关",
+          "typeSpec": {
+            "type": "bool"
+          }
+        },
+        {
+          "abilityId": 104,
+          "accessMode": "ro",
+          "code": "countdown_num",
+          "description": "咖啡制作完成后,4 小时的保温倒计时",
+          "name": "预约",
+          "typeSpec": {
+            "type": "value",
+            "max": 1440,
+            "min": 0,
+            "scale": 0,
+            "step": 1,
+            "unit": "分钟"
+          }
+        },
+        {
+          "abilityId": 105,
+          "accessMode": "rw",
+          "code": "time_calibration",
+          "description": "",
+          "name": "时间校准",
+          "typeSpec": {
+            "type": "enum",
+            "range": [
+              "calibration"
+            ]
+          }
+        }
+      ]
+    }
+  ]
+}
