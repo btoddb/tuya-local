@@ -33,10 +33,7 @@
           "name": "工作模式",
           "typeSpec": {
             "type": "enum",
-            "range": [
-              "smart",
-              "auto"
-            ]
+            "range": ["smart", "auto"]
           }
         },
         {
@@ -50,12 +47,7 @@
           "name": "工作状态",
           "typeSpec": {
             "type": "enum",
-            "range": [
-              "status1",
-              "status2",
-              "status3",
-              "status4"
-            ]
+            "range": ["status1", "status2", "status3", "status4"]
           }
         },
         {
@@ -70,11 +62,7 @@
           "name": "故障告警",
           "typeSpec": {
             "type": "bitmap",
-            "label": [
-              "1",
-              "2",
-              "3"
-            ],
+            "label": ["1", "2", "3"],
             "maxlen": 3
           }
         },
@@ -144,9 +132,7 @@
           "name": "时间校准",
           "typeSpec": {
             "type": "enum",
-            "range": [
-              "calibration"
-            ]
+            "range": ["calibration"]
           }
         }
       ]
