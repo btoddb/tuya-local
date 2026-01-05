@@ -8,6 +8,13 @@ products:
     name: Atomi Smart WiFi Coffee Maker
 
 entities:
+  - entity: coffee_maker
+    dps:
+      - id: 1
+        # power status - read only
+        name: power_status
+        type: boolean
+
   - entity: binary_sensor
     # power status - read only
     name: Brewing
@@ -66,8 +73,10 @@ entities:
             value: true
 
   - entity: sensor
-    # value of fault - remove when figured out what bits 0 and 1 mean (bit 2 is caraf not on base) - read only
-    #    - hidden doesn't seem to work. just adds "(hidden)" to the name of the entity but doesn't disable the entity
+    # value of fault - remove when figured out what bits 0 and 1 mean
+    #    (bit 2 is caraf not on base) - read only
+    #  - hidden doesn't seem to work. just adds "(hidden)" to the name
+    #    of the entity but doesn't disable the entity
     name: Raw fault status
     category: diagnostic
     hidden: true
@@ -77,9 +86,12 @@ entities:
         name: sensor
 
   - entity: sensor
-    # amount of water in the tank - readonly - not working, just shows 0ml.  Once brewing is started, then the woter
-    #   level will be >= 0 if there isn't enough water in the tank - readonly - hidden doesn't seem to work.
-    #   just adds "(hidden)" to the name of the entity but doesn't disable the entity
+    # amount of water in the tank - readonly - not working, just shows 0ml.
+    #   Once brewing is started, then the woter
+    #   level will be >= 0 if there isn't enough water in the tank - readonly
+    #   - hidden doesn't seem to work.
+    #     just adds "(hidden)" to the name of the entity but doesn't disable the
+    #     entity
     name: Water Level
     category: diagnostic
     hidden: true
@@ -92,18 +104,19 @@ entities:
           min: 0
           max: 500
 
-#  - entity: time
-#    # time - read only - didn't work
-#    name: Time
-#    category: diagnostic
-#    dps:
-#      - id: 102
-#        type: integer
-#        name: value
+  #  - entity: time
+  #    # time - read only - didn't work
+  #    name: Time
+  #    category: diagnostic
+  #    dps:
+  #      - id: 102
+  #        type: integer
+  #        name: value
 
   - entity: button
     name: Start Brewing
-    # The switch may or may not turn on the machine.  If there isn't enough water or caraf is missing, then
+    # The switch may or may not turn on the machine.  If there isn't
+    #   enough water or caraf is missing, then
     #   HA will show the switch as ON, but the machine will remain OFF
     icon: "mdi:coffee-maker"
     dps:
@@ -111,19 +124,19 @@ entities:
         type: boolean
         name: button
 
-#  - entity: sensor
-#    # countdown - read only - didn't work
-#    name: Time
-#    category: diagnostic
-#    dps:
-#      - id: 104
-#        type: integer
-#        name: sensor
+  #  - entity: sensor
+  #    # countdown - read only - didn't work
+  #    name: Time
+  #    category: diagnostic
+  #    dps:
+  #      - id: 104
+  #        type: integer
+  #        name: sensor
 
   - entity: button
     # calibration - sets the time when called - should be a button
     name: Set Time
-#    category: config
+    #    category: config
     dps:
       - id: 105
         type: string
